@@ -4,7 +4,7 @@
 TInterface::TInterface(QWidget *parent)
     : QWidget(parent)
 {
-    setWindowTitle("Matrix Handler");
+    setWindowTitle("Работа №4");
     setFixedSize(820, 550);
     int textEditWidth = 400, textEditHeight = 400;
     int buttonWidth = 191, buttonHeight = 40;
@@ -54,20 +54,75 @@ TInterface::TInterface(QWidget *parent)
     _RadioButtonRational->setGeometry(200+300, 450, 100, 50);
 }
 
+
+int TInterface::GetTypeId() {
+    if (_RadioButtonReal->isChecked()) {
+        return ENumberType::REAL;
+    }
+    else if (_RadioButtonComplex->isChecked()) {
+        return ENumberType::COMPLEX;
+    }
+    else if (_RadioButtonRational->isChecked()) {
+        return ENumberType::RATIONAL;
+    }
+    return -1;
+}
+
+Proto::Matrix TInterface::GetMatrix() {
+    QString inputText = _TextEditInput->toPlainText();
+    QStringList lines = inputText.split("\n");
+
+    int size = lines.size();
+    int x = 0;
+    Proto::Matrix matrix;
+    foreach (const QString &line, lines) {
+        Proto::Row row;
+        QStringList items = line.split(" ");
+        x = 0;
+        foreach (const QString &item, items) {
+            *row.add_arr() = item.toStdString();
+            if (++x == size) {
+                break;
+            }
+        }
+        *matrix.add_rows() = row;
+    }
+
+    return matrix;
+}
+
+void TInterface::SendMassage(int actionId)  {
+    Proto::Data msg;
+    msg.set_action_id(actionId);
+    msg.set_type_id(GetTypeId());
+    *msg.mutable_marix() = GetMatrix();
+
+    std::string msgSerialized = msg.SerializeAsString();
+    emit request(msgSerialized);
+}
+
 void TInterface::FindTransposed() {
     qDebug() << "FindTransposed";
+    SendMassage(EIdAction::FIND_TRANSPOSED);
 }
 
 void TInterface::FindRank() {
     qDebug() << "FindRank";
+    SendMassage(EIdAction::FIND_RANK);
+}
+
+void TInterface::EnterMatrix() {
+    qDebug() << "EnterMatrix";
 }
 
 void TInterface::PrintMatrix() {
     qDebug() << "PrintMatrix";
+    SendMassage(EIdAction::PRINT_MATRIX);
 }
 
 void TInterface::FindDeterminant() {
     qDebug() << "FindDeterminant";
+    SendMassage(EIdAction::FIND_DETRMINANT);
 }
 
 TInterface::~TInterface()
@@ -78,6 +133,7 @@ TInterface::~TInterface()
     delete _LabelOutput;
     delete _ButtonFindTransposed;
     delete _ButtonFindRank;
+    delete _ButtonEnterMatrix;
     delete _ButtonPrintMatrix;
     delete _ButtonFindDeterminant;
 }

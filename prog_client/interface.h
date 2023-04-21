@@ -8,6 +8,7 @@
 #include <QPushButton>
 #include <QRadioButton>
 #include "common.h"
+#include "data.pb.h"
 
 class TInterface : public QWidget
 {
@@ -24,11 +25,15 @@ private:
     QLabel* _LabelOutput;
     QPushButton* _ButtonFindTransposed;
     QPushButton* _ButtonFindRank;
+    QPushButton* _ButtonEnterMatrix;
     QPushButton* _ButtonPrintMatrix;
     QPushButton* _ButtonFindDeterminant;
     QRadioButton* _RadioButtonReal;
     QRadioButton* _RadioButtonComplex;
     QRadioButton* _RadioButtonRational;
+    int GetTypeId();
+    Proto::Matrix GetMatrix();
+    void SendMassage(int actionId);
 
 public slots:
     void answer(QString);
@@ -36,11 +41,12 @@ public slots:
 public slots:
     void FindTransposed();
     void FindRank();
+    void EnterMatrix();
     void PrintMatrix();
     void FindDeterminant();
 
 signals:
-    void request(QString);
+    void request(std::string);
 
 };
 
