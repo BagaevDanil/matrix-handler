@@ -27,6 +27,17 @@ TEST(Complex, createFromString2) {
     ASSERT_TRUE(complex.ImaginaryUnit() == img);
 }
 
+TEST(Complex, createFromString3) {
+    double real = 48249.191143;
+    double img = 0;
+
+    string complexStr = to_string(real) + "+" + to_string(img) + "i";
+    TComplex complex(complexStr);
+
+    ASSERT_TRUE(complex.RealNumber() == real);
+    ASSERT_TRUE(complex.ImaginaryUnit() == img);
+}
+
 TEST(Complex, addition) {
     TComplex num1(14242, 48);
     TComplex num2(595, 854);
@@ -70,19 +81,6 @@ TEST(Complex, toString) {
     auto numStr = num.ToQString();
     ASSERT_TRUE(numStr == ans);
 }
-
-
-TEST(Complex, mul) {
-    double real = 48249.191143;
-    double img = 0;
-
-    string complexStr = to_string(real) + "+" + to_string(img) + "i";
-    TComplex complex(complexStr);
-
-    ASSERT_TRUE(complex.RealNumber() == real);
-    ASSERT_TRUE(complex.ImaginaryUnit() == img);
-}
-
 
 int main()
 {
