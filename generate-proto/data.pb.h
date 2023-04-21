@@ -54,11 +54,15 @@ extern MatrixDefaultTypeInternal _Matrix_default_instance_;
 class Row;
 struct RowDefaultTypeInternal;
 extern RowDefaultTypeInternal _Row_default_instance_;
+class ServerAnswer;
+struct ServerAnswerDefaultTypeInternal;
+extern ServerAnswerDefaultTypeInternal _ServerAnswer_default_instance_;
 }  // namespace Proto
 PROTOBUF_NAMESPACE_OPEN
 template<> ::Proto::Data* Arena::CreateMaybeMessage<::Proto::Data>(Arena*);
 template<> ::Proto::Matrix* Arena::CreateMaybeMessage<::Proto::Matrix>(Arena*);
 template<> ::Proto::Row* Arena::CreateMaybeMessage<::Proto::Row>(Arena*);
+template<> ::Proto::ServerAnswer* Arena::CreateMaybeMessage<::Proto::ServerAnswer>(Arena*);
 PROTOBUF_NAMESPACE_CLOSE
 namespace Proto {
 
@@ -561,6 +565,159 @@ class Data final :
   union { Impl_ _impl_; };
   friend struct ::TableStruct_data_2eproto;
 };
+// -------------------------------------------------------------------
+
+class ServerAnswer final :
+    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:Proto.ServerAnswer) */ {
+ public:
+  inline ServerAnswer() : ServerAnswer(nullptr) {}
+  ~ServerAnswer() override;
+  explicit PROTOBUF_CONSTEXPR ServerAnswer(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized);
+
+  ServerAnswer(const ServerAnswer& from);
+  ServerAnswer(ServerAnswer&& from) noexcept
+    : ServerAnswer() {
+    *this = ::std::move(from);
+  }
+
+  inline ServerAnswer& operator=(const ServerAnswer& from) {
+    CopyFrom(from);
+    return *this;
+  }
+  inline ServerAnswer& operator=(ServerAnswer&& from) noexcept {
+    if (this == &from) return *this;
+    if (GetOwningArena() == from.GetOwningArena()
+  #ifdef PROTOBUF_FORCE_COPY_IN_MOVE
+        && GetOwningArena() != nullptr
+  #endif  // !PROTOBUF_FORCE_COPY_IN_MOVE
+    ) {
+      InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+
+  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* descriptor() {
+    return GetDescriptor();
+  }
+  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* GetDescriptor() {
+    return default_instance().GetMetadata().descriptor;
+  }
+  static const ::PROTOBUF_NAMESPACE_ID::Reflection* GetReflection() {
+    return default_instance().GetMetadata().reflection;
+  }
+  static const ServerAnswer& default_instance() {
+    return *internal_default_instance();
+  }
+  static inline const ServerAnswer* internal_default_instance() {
+    return reinterpret_cast<const ServerAnswer*>(
+               &_ServerAnswer_default_instance_);
+  }
+  static constexpr int kIndexInFileMessages =
+    3;
+
+  friend void swap(ServerAnswer& a, ServerAnswer& b) {
+    a.Swap(&b);
+  }
+  inline void Swap(ServerAnswer* other) {
+    if (other == this) return;
+  #ifdef PROTOBUF_FORCE_COPY_IN_SWAP
+    if (GetOwningArena() != nullptr &&
+        GetOwningArena() == other->GetOwningArena()) {
+   #else  // PROTOBUF_FORCE_COPY_IN_SWAP
+    if (GetOwningArena() == other->GetOwningArena()) {
+  #endif  // !PROTOBUF_FORCE_COPY_IN_SWAP
+      InternalSwap(other);
+    } else {
+      ::PROTOBUF_NAMESPACE_ID::internal::GenericSwap(this, other);
+    }
+  }
+  void UnsafeArenaSwap(ServerAnswer* other) {
+    if (other == this) return;
+    GOOGLE_DCHECK(GetOwningArena() == other->GetOwningArena());
+    InternalSwap(other);
+  }
+
+  // implements Message ----------------------------------------------
+
+  ServerAnswer* New(::PROTOBUF_NAMESPACE_ID::Arena* arena = nullptr) const final {
+    return CreateMaybeMessage<ServerAnswer>(arena);
+  }
+  using ::PROTOBUF_NAMESPACE_ID::Message::CopyFrom;
+  void CopyFrom(const ServerAnswer& from);
+  using ::PROTOBUF_NAMESPACE_ID::Message::MergeFrom;
+  void MergeFrom( const ServerAnswer& from) {
+    ServerAnswer::MergeImpl(*this, from);
+  }
+  private:
+  static void MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_msg, const ::PROTOBUF_NAMESPACE_ID::Message& from_msg);
+  public:
+  PROTOBUF_ATTRIBUTE_REINITIALIZES void Clear() final;
+  bool IsInitialized() const final;
+
+  size_t ByteSizeLong() const final;
+  const char* _InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) final;
+  uint8_t* _InternalSerialize(
+      uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const final;
+  int GetCachedSize() const final { return _impl_._cached_size_.Get(); }
+
+  private:
+  void SharedCtor(::PROTOBUF_NAMESPACE_ID::Arena* arena, bool is_message_owned);
+  void SharedDtor();
+  void SetCachedSize(int size) const final;
+  void InternalSwap(ServerAnswer* other);
+
+  private:
+  friend class ::PROTOBUF_NAMESPACE_ID::internal::AnyMetadata;
+  static ::PROTOBUF_NAMESPACE_ID::StringPiece FullMessageName() {
+    return "Proto.ServerAnswer";
+  }
+  protected:
+  explicit ServerAnswer(::PROTOBUF_NAMESPACE_ID::Arena* arena,
+                       bool is_message_owned = false);
+  public:
+
+  static const ClassData _class_data_;
+  const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*GetClassData() const final;
+
+  ::PROTOBUF_NAMESPACE_ID::Metadata GetMetadata() const final;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  enum : int {
+    kAnswerFieldNumber = 1,
+  };
+  // string answer = 1;
+  void clear_answer();
+  const std::string& answer() const;
+  template <typename ArgT0 = const std::string&, typename... ArgT>
+  void set_answer(ArgT0&& arg0, ArgT... args);
+  std::string* mutable_answer();
+  PROTOBUF_NODISCARD std::string* release_answer();
+  void set_allocated_answer(std::string* answer);
+  private:
+  const std::string& _internal_answer() const;
+  inline PROTOBUF_ALWAYS_INLINE void _internal_set_answer(const std::string& value);
+  std::string* _internal_mutable_answer();
+  public:
+
+  // @@protoc_insertion_point(class_scope:Proto.ServerAnswer)
+ private:
+  class _Internal;
+
+  template <typename T> friend class ::PROTOBUF_NAMESPACE_ID::Arena::InternalHelper;
+  typedef void InternalArenaConstructable_;
+  typedef void DestructorSkippable_;
+  struct Impl_ {
+    ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr answer_;
+    mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
+  };
+  union { Impl_ _impl_; };
+  friend struct ::TableStruct_data_2eproto;
+};
 // ===================================================================
 
 
@@ -825,9 +982,65 @@ inline void Data::set_type_id(int32_t value) {
   // @@protoc_insertion_point(field_set:Proto.Data.type_id)
 }
 
+// -------------------------------------------------------------------
+
+// ServerAnswer
+
+// string answer = 1;
+inline void ServerAnswer::clear_answer() {
+  _impl_.answer_.ClearToEmpty();
+}
+inline const std::string& ServerAnswer::answer() const {
+  // @@protoc_insertion_point(field_get:Proto.ServerAnswer.answer)
+  return _internal_answer();
+}
+template <typename ArgT0, typename... ArgT>
+inline PROTOBUF_ALWAYS_INLINE
+void ServerAnswer::set_answer(ArgT0&& arg0, ArgT... args) {
+ 
+ _impl_.answer_.Set(static_cast<ArgT0 &&>(arg0), args..., GetArenaForAllocation());
+  // @@protoc_insertion_point(field_set:Proto.ServerAnswer.answer)
+}
+inline std::string* ServerAnswer::mutable_answer() {
+  std::string* _s = _internal_mutable_answer();
+  // @@protoc_insertion_point(field_mutable:Proto.ServerAnswer.answer)
+  return _s;
+}
+inline const std::string& ServerAnswer::_internal_answer() const {
+  return _impl_.answer_.Get();
+}
+inline void ServerAnswer::_internal_set_answer(const std::string& value) {
+  
+  _impl_.answer_.Set(value, GetArenaForAllocation());
+}
+inline std::string* ServerAnswer::_internal_mutable_answer() {
+  
+  return _impl_.answer_.Mutable(GetArenaForAllocation());
+}
+inline std::string* ServerAnswer::release_answer() {
+  // @@protoc_insertion_point(field_release:Proto.ServerAnswer.answer)
+  return _impl_.answer_.Release();
+}
+inline void ServerAnswer::set_allocated_answer(std::string* answer) {
+  if (answer != nullptr) {
+    
+  } else {
+    
+  }
+  _impl_.answer_.SetAllocated(answer, GetArenaForAllocation());
+#ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  if (_impl_.answer_.IsDefault()) {
+    _impl_.answer_.Set("", GetArenaForAllocation());
+  }
+#endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  // @@protoc_insertion_point(field_set_allocated:Proto.ServerAnswer.answer)
+}
+
 #ifdef __GNUC__
   #pragma GCC diagnostic pop
 #endif  // __GNUC__
+// -------------------------------------------------------------------
+
 // -------------------------------------------------------------------
 
 // -------------------------------------------------------------------

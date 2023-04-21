@@ -140,5 +140,8 @@ TInterface::~TInterface()
 
 void TInterface::HandleAnswer(QString msg)
 {
-    _TextEditOutput->setText(msg);
+    Proto::ServerAnswer answer;
+    answer.ParseFromString(msg.toStdString());
+
+    _TextEditOutput->setText(QString::fromStdString(answer.answer()));
 }

@@ -16,3 +16,7 @@ message Data {
 	int32 type_id = 3;
 }
 
+message ServerAnswer {
+	string answer = 1;
+}
+
