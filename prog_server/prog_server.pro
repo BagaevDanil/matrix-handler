@@ -19,4 +19,6 @@ else: unix:!android: target.path = /opt/$${TARGET}/bin
 
 HEADERS += \
     complex.h \
-    rationalnumber.h
+    matrix.h \
+    rationalnumber.h \
+    squarematrix.h
