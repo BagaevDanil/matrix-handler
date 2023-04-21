@@ -20,11 +20,14 @@ public:
     friend TRationalNumber operator+(const TRationalNumber &first, const TRationalNumber &second);
     friend TRationalNumber operator-(const TRationalNumber &first, const TRationalNumber &second);
     friend TRationalNumber operator/(const TRationalNumber &first, const TRationalNumber &second);
+    friend bool operator==(const TRationalNumber &first, const TRationalNumber &second);
     friend ostream& operator<< (ostream& out, const TRationalNumber& complexNum);
     friend istream& operator>> (istream &in, TRationalNumber &complexNum);
     friend double abs(TRationalNumber &complexNum);
     QString ToQString();
     double ToDouble();
+    int Numerator();
+    int Denominator();
 
 private:
     int _Numerator;

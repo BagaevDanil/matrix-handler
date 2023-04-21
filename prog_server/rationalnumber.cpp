@@ -108,6 +108,18 @@ istream& operator>> (istream &in, TRationalNumber /*&rationalNumber*/)
     return in;
 }
 
+bool operator==(const TRationalNumber &first, const TRationalNumber &second) {
+    return first._Numerator == second._Numerator && first._Denominator == second._Denominator;
+}
+
+int TRationalNumber::Numerator() {
+    return _Numerator;
+}
+
+int TRationalNumber::Denominator() {
+    return _Denominator;
+}
+
 double abs(TRationalNumber &rationalNumber) {
     return abs(rationalNumber._Numerator / rationalNumber._Denominator);
 }

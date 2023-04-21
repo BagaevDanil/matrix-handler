@@ -10,6 +10,7 @@ INCLUDEPATH += "../prog_server"
 
 SOURCES += \
         ../prog_server/complex.cpp \
+        ../prog_server/rationalnumber.cpp \
         main.cpp
 
 # Default rules for deployment.
@@ -23,4 +24,5 @@ INCLUDEPATH += $$PWD/../lib/googletest/include/googletest/include
 DEPENDPATH += $$PWD/../lib/googletest/include/googletest/include
 
 HEADERS += \
-    ../prog_server/complex.h
+    ../prog_server/complex.h \
+    ../prog_server/rationalnumber.h

@@ -1,9 +1,90 @@
 #include <QCoreApplication>
 #include <gtest/gtest.h>
 #include "complex.h"
+#include "rationalnumber.h"
 #include <iostream>
 
 using namespace std;
+
+// Rational
+
+TEST(Rational, createFromString1) {
+    TRationalNumber num("314/156");
+
+    ASSERT_TRUE(num.Numerator() == 157);
+    ASSERT_TRUE(num.Denominator() == 78);
+}
+
+TEST(Rational, createFromString2) {
+    TRationalNumber num("190/19");
+
+    ASSERT_TRUE(num.Numerator() == 10);
+    ASSERT_TRUE(num.Denominator() == 1);
+}
+
+TEST(Rational, createFromString3) {
+    TRationalNumber num("115");
+
+    ASSERT_TRUE(num.Numerator() == 115);
+    ASSERT_TRUE(num.Denominator() == 1);
+}
+
+TEST(Rational, addition) {
+    TRationalNumber num1(144, 42);
+    TRationalNumber num2(67, 21);
+    TRationalNumber ans(139, 21);
+
+    auto prediction = num1 + num2;
+
+    ASSERT_TRUE(prediction == ans);
+}
+
+TEST(Rational, subtraction) {
+    TRationalNumber num1(144, 42);
+    TRationalNumber num2(67, 21);
+    TRationalNumber ans(5, 21);
+
+    auto prediction = num1 - num2;
+    ASSERT_TRUE(prediction == ans);
+}
+
+TEST(Rational, multiplications) {
+    TRationalNumber num1(144, 42);
+    TRationalNumber num2(67, 21);
+    TRationalNumber ans(536, 49);
+
+    auto prediction = num1 * num2;
+    ASSERT_TRUE(prediction == ans);
+}
+
+TEST(Rational, division) {
+    TRationalNumber num1(144, 42);
+    TRationalNumber num2(67, 21);
+    TRationalNumber ans(72, 67);
+
+    auto prediction = num1 / num2;
+    ASSERT_TRUE(prediction == ans);
+}
+
+TEST(Rational, toString) {
+    TRationalNumber num(1434, 342);
+    QString ans = "239/57";
+
+    auto numStr = num.ToQString();
+
+    ASSERT_TRUE(numStr == ans);
+}
+
+TEST(Rational, toString2) {
+    TRationalNumber num(1434, 2);
+    QString ans = "717";
+
+    auto numStr = num.ToQString();
+
+    ASSERT_TRUE(numStr == ans);
+}
+
+// Complex
 
 TEST(Complex, createFromString1) {
     double real = 10331.344;
