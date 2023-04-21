@@ -25,4 +25,6 @@ DEPENDPATH += $$PWD/../lib/googletest/include/googletest/include
 
 HEADERS += \
     ../prog_server/complex.h \
-    ../prog_server/rationalnumber.h
+    ../prog_server/matrix.h \
+    ../prog_server/rationalnumber.h \
+    ../prog_server/squarematrix.h

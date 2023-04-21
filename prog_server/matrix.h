@@ -25,7 +25,10 @@ public:
     void EnterMatrix(number** matrix, int sizeH, int sizeW);
     friend ostream& operator<< (ostream& out, const TMatrix& matrix);
     TMatrix* FindTransposed();
+    const number& Get(int y, int x);
     string ToString();
+    int GetSizeH();
+    int GetSizeW();
 };
 
 
@@ -59,6 +62,18 @@ TMatrix<number>::TMatrix(const TMatrix& matrix)
             _Matrix[y][x] = matrix._Matrix[y][x];
         }
     }
+}
+
+
+template <class number>
+int TMatrix<number>::GetSizeH() {
+    return _SizeH;
+}
+
+
+template <class number>
+int TMatrix<number>::GetSizeW() {
+    return _SizeW;
 }
 
 
@@ -135,6 +150,12 @@ std::ostream& operator<< (std::ostream &out, const TMatrix<number> &matrix)
         out << "\n";
     }
     return out;
+}
+
+
+template <class number>
+const number& TMatrix<number>::Get(int y, int x) {
+    return _Matrix[y][x];
 }
 
 #endif // TMATRIX_H

@@ -2,9 +2,31 @@
 #include <gtest/gtest.h>
 #include "complex.h"
 #include "rationalnumber.h"
+#include "matrix.h"
 #include <iostream>
 
 using namespace std;
+
+// Matrix
+
+TEST(Matrix, enterMatrix) {
+    TMatrix<double> matrix;
+    int h = 7, w = 4;
+    double **area = new double*[h];
+
+    for (int y = 0; y < h; y++) {
+        area[y] = new double[w];
+        for (int x = 0; x < w; x++) {
+            area[y][x] = y*h + x;
+        }
+    }
+    matrix.EnterMatrix(area, h, w);
+
+    ASSERT_EQ(matrix.GetSizeH(), h);
+    ASSERT_EQ(matrix.GetSizeW(), w);
+    ASSERT_EQ(matrix.Get(5, 2), 5*h + 2);
+    ASSERT_EQ(matrix.Get(1, 0), 1*h + 0);
+}
 
 // Rational
 
