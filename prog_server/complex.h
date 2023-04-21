@@ -23,8 +23,11 @@ public:
     friend TComplex operator/(const TComplex &first, const TComplex &second);
     friend ostream& operator<< (ostream& out, const TComplex& complexNum);
     friend istream& operator>> (istream &in, TComplex &complexNum);
+    friend bool operator== (TComplex &first, TComplex &second);
     friend double abs(TComplex &complexNum);
     QString ToQString();
+    double RealNumber();
+    double ImaginaryUnit();
 
 private:
     double _RealNumber;

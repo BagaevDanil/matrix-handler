@@ -77,6 +77,10 @@ ostream& operator<< (ostream &out, const TComplex &complexNum)
     return out;
 }
 
+bool operator== (TComplex &first, TComplex &second) {
+    return first._RealNumber == second._RealNumber && first._ImaginaryUnit == second._ImaginaryUnit;
+}
+
 istream& operator>> (istream &in, TComplex &complexNum)
 {
     string str;
@@ -109,4 +113,12 @@ QString TComplex::ToQString()
     QString sign = _ImaginaryUnit >= 0 ? " + " : " - ";
     QString ans = "(" + QString::number(_RealNumber) + sign + QString::number(abs(_ImaginaryUnit)) + "i)";
     return ans;
+}
+
+double TComplex::RealNumber() {
+    return _RealNumber;
+}
+
+double TComplex::ImaginaryUnit() {
+    return _ImaginaryUnit;
 }
