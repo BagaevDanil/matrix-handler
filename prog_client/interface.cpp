@@ -98,7 +98,7 @@ void TInterface::SendMassage(int actionId)  {
     *msg.mutable_marix() = GetMatrix();
 
     std::string msgSerialized = msg.SerializeAsString();
-    emit request(msgSerialized);
+    emit SendRequest(msgSerialized);
 }
 
 void TInterface::FindTransposed() {
@@ -138,7 +138,7 @@ TInterface::~TInterface()
     delete _ButtonFindDeterminant;
 }
 
-void TInterface::answer(QString msg)
+void TInterface::HandleAnswer(QString msg)
 {
     _TextEditOutput->setText(msg);
 }

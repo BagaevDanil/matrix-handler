@@ -10,19 +10,19 @@ TApplication::TApplication(int argc, char *argv[])
     interface = new TInterface();
     interface->show();
 
-    connect(comm,SIGNAL(recieved(QByteArray)),this,
-            SLOT(fromCommunicator(QByteArray)));
-    connect(interface,SIGNAL(request(std::string)),
-            this,SLOT(toCommunicator(std::string)));
+    connect(comm, SIGNAL(recieved(QByteArray)),
+            this, SLOT(FromCommunicator(QByteArray)));
+    connect(interface, SIGNAL(SendRequest(std::string)),
+            this, SLOT(ToCommunicator(std::string)));
 
 }
 
-void TApplication::fromCommunicator(QByteArray msg)
+void TApplication::FromCommunicator(QByteArray msg)
 {
-    interface->answer(QString(msg));
+    interface->HandleAnswer(QString(msg));
 }
 
-void TApplication::toCommunicator(std::string msg)
+void TApplication::ToCommunicator(std::string msg)
 {
     QByteArray q;
     qDebug() << QString::fromStdString(msg);

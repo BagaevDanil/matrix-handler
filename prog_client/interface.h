@@ -36,7 +36,7 @@ private:
     void SendMassage(int actionId);
 
 public slots:
-    void answer(QString);
+    void HandleAnswer(QString);
 
 public slots:
     void FindTransposed();
@@ -46,7 +46,7 @@ public slots:
     void FindDeterminant();
 
 signals:
-    void request(std::string);
+    void SendRequest(std::string);
 
 };
 

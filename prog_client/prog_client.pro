@@ -14,6 +14,7 @@ SOURCES += \
     ../common/common.cpp \
     ../common/communicator.cpp \
     ../generate-proto/data.pb.cc \
+    application.cpp \
     main.cpp \
     interface.cpp
 
@@ -21,6 +22,7 @@ HEADERS += \
     ../common/common.h \
     ../common/communicator.h \
     ../generate-proto/data.pb.h \
+    application.h \
     interface.h
 
 # Default rules for deployment.

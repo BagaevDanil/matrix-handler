@@ -18,8 +18,8 @@ public:
     TApplication(int, char**);
 
 public slots:
-    void fromCommunicator(QByteArray);
-    void toCommunicator(std::string);
+    void FromCommunicator(QByteArray);
+    void ToCommunicator(std::string);
 
 };
 
