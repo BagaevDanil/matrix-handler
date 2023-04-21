@@ -1,0 +1,18 @@
+syntax = "proto3";
+
+package Proto;
+
+message Row {
+	repeated string arr = 1;
+}
+
+message Matrix {
+	repeated Row rows = 1;
+}
+
+message Data {
+	Matrix marix = 1;
+	int32 action_id = 2;
+	int32 type_id = 3;
+}
+
