@@ -94,7 +94,7 @@ ostream& operator<< (ostream &out, const TRationalNumber &rationalNumber)
     return out;
 }
 
-QString TRationalNumber::ToQString() {
+QString TRationalNumber::ToQString() const {
     QString ans;
     ans += QString::number(_Numerator);
     if (_Denominator != 1) {
@@ -112,11 +112,11 @@ bool operator==(const TRationalNumber &first, const TRationalNumber &second) {
     return first._Numerator == second._Numerator && first._Denominator == second._Denominator;
 }
 
-int TRationalNumber::Numerator() {
+const int& TRationalNumber::Numerator() const {
     return _Numerator;
 }
 
-int TRationalNumber::Denominator() {
+const int& TRationalNumber::Denominator() const {
     return _Denominator;
 }
 
@@ -124,7 +124,7 @@ double abs(TRationalNumber &rationalNumber) {
     return abs(rationalNumber._Numerator / rationalNumber._Denominator);
 }
 
-double TRationalNumber::ToDouble() {
+double TRationalNumber::ToDouble() const {
     return (1.0 * _Numerator / _Denominator);
 }
 

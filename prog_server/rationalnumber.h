@@ -24,10 +24,10 @@ public:
     friend ostream& operator<< (ostream& out, const TRationalNumber& complexNum);
     friend istream& operator>> (istream &in, TRationalNumber &complexNum);
     friend double abs(TRationalNumber &complexNum);
-    QString ToQString();
-    double ToDouble();
-    int Numerator();
-    int Denominator();
+    QString ToQString() const;
+    double ToDouble() const;
+    const int& Numerator() const;
+    const int& Denominator() const;
 
 private:
     int _Numerator;

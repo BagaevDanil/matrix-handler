@@ -16,14 +16,15 @@ public:
     TSquareMatrix(const TSquareMatrix& matrix);
 
     void EnterMatrix(number** matrix, int size);
-    number FindDeterminant();
-    int FindRank();
+    number FindDeterminant() const;
+    int FindRank() const;
 };
 
 
 namespace {
     template <class number>
-    void clearMemory(number** a, int n) {
+    void clearMemory(number** a, int n)
+    {
         for (int i = 0; i < n; i++) {
             delete[] a[i];
         }
@@ -31,7 +32,8 @@ namespace {
     }
 
     template <class number>
-    number findDet(number** a, int n) {
+    number findDet(number** a, int n)
+    {
         if (n == 1)
             return a[0][0];
         else if (n == 2)
@@ -70,14 +72,14 @@ TSquareMatrix<number>::TSquareMatrix(const TSquareMatrix& matrix) : TMatrix<numb
 
 
 template <class number>
-number TSquareMatrix<number>::FindDeterminant()
+number TSquareMatrix<number>::FindDeterminant() const
 {
     return findDet(TMatrix<number>::_Matrix, TMatrix<number>::_SizeH);
 }
 
 
 template <class number>
-int TSquareMatrix<number>::FindRank()
+int TSquareMatrix<number>::FindRank() const
 {
     TSquareMatrix a(*this);
     const double EPS = 1E-9;

@@ -13,13 +13,9 @@ class TApplication : public QCoreApplication
     TCommunicator *comm;
 
 public:
-
     TApplication(int, char**);
 
-signals:
-
 public slots:
-
     void HandleRequest(QByteArray);
 
 };

@@ -25,9 +25,9 @@ public:
     friend istream& operator>> (istream &in, TComplex &complexNum);
     friend bool operator== (TComplex &first, TComplex &second);
     friend double abs(TComplex &complexNum);
-    QString ToQString();
-    double RealNumber();
-    double ImaginaryUnit();
+    QString ToQString() const;
+    const double& RealNumber() const;
+    const double& ImaginaryUnit() const;
 
 private:
     double _RealNumber;

@@ -24,11 +24,11 @@ public:
 
     void EnterMatrix(number** matrix, int sizeH, int sizeW);
     friend ostream& operator<< (ostream& out, const TMatrix& matrix);
-    TMatrix* FindTransposed();
-    const number& Get(int y, int x);
-    string ToString();
-    int GetSizeH();
-    int GetSizeW();
+    TMatrix* FindTransposed() const;
+    const number& Get(int y, int x) const;
+    string ToString() const;
+    const int& GetSizeH() const;
+    const int& GetSizeW() const;
 };
 
 
@@ -66,13 +66,15 @@ TMatrix<number>::TMatrix(const TMatrix& matrix)
 
 
 template <class number>
-int TMatrix<number>::GetSizeH() {
+const int& TMatrix<number>::GetSizeH() const
+{
     return _SizeH;
 }
 
 
 template <class number>
-int TMatrix<number>::GetSizeW() {
+const int& TMatrix<number>::GetSizeW() const
+{
     return _SizeW;
 }
 
@@ -85,7 +87,8 @@ TMatrix<number>::~TMatrix()
 
 
 template <class number>
-void TMatrix<number>::DeleteMemoryMatrix() {
+void TMatrix<number>::DeleteMemoryMatrix()
+{
     for (int y = 0; y < _SizeH; y++) {
         delete[] _Matrix[y];
     }
@@ -94,7 +97,7 @@ void TMatrix<number>::DeleteMemoryMatrix() {
 
 
 template <class number>
-TMatrix<number>* TMatrix<number>::FindTransposed()
+TMatrix<number>* TMatrix<number>::FindTransposed() const
 {
     TMatrix* transposedMatrix = new TMatrix(_SizeW, _SizeH);
 
@@ -126,7 +129,7 @@ void TMatrix<number>::EnterMatrix(number** matrix, int sizeH, int sizeW)
 
 
 template <class number>
-string TMatrix<number>::ToString()
+string TMatrix<number>::ToString() const
 {
     ostringstream out;
     for (int y = 0; y < _SizeH; y++) {
@@ -154,7 +157,8 @@ std::ostream& operator<< (std::ostream &out, const TMatrix<number> &matrix)
 
 
 template <class number>
-const number& TMatrix<number>::Get(int y, int x) {
+const number& TMatrix<number>::Get(int y, int x) const
+{
     return _Matrix[y][x];
 }
 

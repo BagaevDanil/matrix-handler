@@ -108,17 +108,17 @@ double abs(TComplex &complexNum) {
 }
 
 
-QString TComplex::ToQString()
+QString TComplex::ToQString() const
 {
     QString sign = _ImaginaryUnit >= 0 ? " + " : " - ";
     QString ans = "(" + QString::number(_RealNumber) + sign + QString::number(abs(_ImaginaryUnit)) + "i)";
     return ans;
 }
 
-double TComplex::RealNumber() {
+const double& TComplex::RealNumber() const {
     return _RealNumber;
 }
 
-double TComplex::ImaginaryUnit() {
+const double& TComplex::ImaginaryUnit() const {
     return _ImaginaryUnit;
 }
